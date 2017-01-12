@@ -13,16 +13,10 @@ def words(filename)
     reject { |word| word != word.downcase }
 end
 
-# Checks if a single word is sorted
-def sorted?(word)
-  word.chars.sort == word.chars
-end
-
-# The main stuff:
 # Find the words matching the criteria
 matches = words(filename).
-  select { |w| w.size == 6 }.
-  select { |w| sorted?(w) }
+  select { |word| word.size == 6 }.
+  select { |word| word.chars.sort == word.chars }
 
 # Print the matching words
 puts matches
